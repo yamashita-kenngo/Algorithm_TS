@@ -1,6 +1,29 @@
 /*
 二分探査を実装する
+1から100までの間で探査する
 */
+
+function binarySearch() {
+  let returnFlag = true;
+  let startNum = 1;
+  let endNum = 100;
+
+  while (returnFlag) {
+    let inputNum = (startNum + endNum) / 2;
+    const answer = toAnswer(inputNum);
+
+    if (answer === "正解") {
+      returnFlag = false;
+    }
+    if (answer === "大きい") {
+      endNum = inputNum;
+    }
+    if (answer === "小さい") {
+      startNum = inputNum;
+    }
+  }
+  return (startNum + endNum) / 2;
+}
 
 /*
 間抜けな探し方を実装する
@@ -45,3 +68,4 @@ function toAnswer(input: number): string | undefined {
 }
 
 console.log(stupidSearch());
+console.log(binarySearch());
